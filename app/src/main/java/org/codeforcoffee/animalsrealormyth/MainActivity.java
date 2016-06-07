@@ -10,7 +10,7 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Animal[] mAnimals;
+    private Animal[] mAnimals = new Animal[5];
     private TextView mTxtName;
     private TextView mTxtDescription;
     private TextView mTxtLocation;
@@ -26,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mAnimals[0] = new Animal("Kakapo", "An endangered species; known as the flightless bird that is too friendly", "New Zealand", false);
+        mAnimals[1] = new Animal("Unicorn", "A rare sight to behold; the horse with a horn!", "South America", true);
+        mAnimals[2] = new Animal("Bottle nose dolphin", "The cutest, chubbiest dolphin ever; now thought to be extinct", "China", false);
+        mAnimals[3] = new Animal("Loch Ness Monster", "A pleiasaur leftover from eons long gone", "Ireland", true);
+        mAnimals[4] = new Animal("Coral Snake", "Rumoured to eat nothing but coral, the coral snake continuously bites a victim.", "Coastal US", false);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

@@ -10,17 +10,17 @@ public class Animal {
     String mLocation;
     String mCorrectMessage;
     String mIncorrectMessage;
+    boolean isMythological;
 
     public Animal() {
 
     }
 
-    public Animal(String name, String desc, String loc, String corMsg, String failMsg) {
+    public Animal(String name, String desc, String loc, boolean isMyth) {
         this.mName = name;
         this.mDescription = desc;
         this.mLocation = loc;
-        this.mCorrectMessage = corMsg;
-        this.mIncorrectMessage = failMsg;
+        this.isMythological = isMyth || false;
     }
 
     public String getName() {
