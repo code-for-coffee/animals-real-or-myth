@@ -2,6 +2,7 @@ package org.codeforcoffee.animalsrealormyth;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,5 +45,42 @@ public class MainActivity extends AppCompatActivity {
         mTxtScore = (TextView) findViewById(R.id.txt_score);
         mTxtAttempts = (TextView) findViewById(R.id.txt_user_attempts);
 
+        mBtnTrue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mBtnFalse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+    }
+
+    private void updateScore() {
+
+    }
+
+    private boolean submitAnswer() {
+        boolean isCorrect = false;
+
+        return isCorrect;
+    }
+
+    private void changeQuestion() {
+        if (currentQuestion < mAnimals.length) {
+            updateQuestionText(mAnimals[currentQuestion]);
+            currentQuestion++;
+        }
+    }
+
+    private void updateQuestionText(Animal animal) {
+        mTxtName.setText(animal.getName());
+        mTxtDescription.setText(animal.getDescription());
+        mTxtLocation.setText(animal.getLocation());
     }
 }
