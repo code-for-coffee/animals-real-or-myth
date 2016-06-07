@@ -45,29 +45,53 @@ public class MainActivity extends AppCompatActivity {
         mTxtScore = (TextView) findViewById(R.id.txt_score);
         mTxtAttempts = (TextView) findViewById(R.id.txt_user_attempts);
 
+        updateQuestionText(mAnimals[currentQuestion]);
+
         mBtnTrue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                submitAnswer(true, mAnimals[currentQuestion].isMythological);
             }
         });
 
         mBtnFalse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                submitAnswer(false, mAnimals[currentQuestion].isMythological);
             }
         });
 
     }
 
-    private void updateScore() {
-
+    private void displayToast(String msg) {
+        mToast.makeText(this, msg, Toast.LENGTH_LONG);
     }
 
-    private boolean submitAnswer() {
-        boolean isCorrect = false;
+    private void updateScore(boolean isCorrect) {
+        attempts++;
+        if (isCorrect) {
+            score++;
+        }
+        mTxtAttempts.setText("Attempts: " + Integer.toString(attempts));
+        mTxtScore.setText("Score: " + Integer.toString(score));
+    }
 
+    private boolean submitAnswer(boolean answer, boolean isMyth) {
+        boolean isCorrect = false;
+        if (isMyth == false && answer == true) {
+            // real animal, true
+            isCorrect = true;
+            displayToast("You are correct!");
+        } else if (isMyth == true && answer == false) {
+            // true, a myth
+            displayToast("You are correct!");
+            isCorrect = true;
+        } else {
+            displayToast("You are wrong! You lose, GENERAL KENOBI!!!!@!2122");
+            // wrong answer, false
+        }
+        updateScore(isCorrect);
+        changeQuestion();
         return isCorrect;
     }
 
